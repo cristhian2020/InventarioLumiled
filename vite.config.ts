@@ -12,23 +12,18 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       },
       manifest: {
-        name: 'Inventario de Focos',
-        short_name: 'InventarioApp',
-        description: 'Aplicación para gestión de inventario de focos',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
+  name: 'Inventario de Focos',
+  short_name: 'InventarioApp',
+  description: 'Aplicación para gestión de inventario de focos',
+  start_url: '/',
+  display: 'standalone',      // también es importante
+  theme_color: '#ffffff',
+  icons: [
+    { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+    { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' }
+  ]
+}
+
     })
   ],
 })
