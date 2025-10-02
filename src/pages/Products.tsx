@@ -71,7 +71,7 @@ export const ProductsPage: React.FC = () => {
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto w-full">
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
-        Inventario de Productos
+        Inventario de Productos LumiLed
       </h1>
 
       {/* Barra de búsqueda y filtros */}
