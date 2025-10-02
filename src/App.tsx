@@ -24,7 +24,7 @@ function App() {
           }`}
         >
           <div className="p-4 flex items-center justify-between border-b border-gray-700">
-            <h2 className="text-xl font-bold">📦 Inventario</h2>
+            <h2 className="text-xl font-bold">📦 Inventario LUMILED</h2>
             <button
               className="lg:hidden text-gray-300 hover:text-white p-1"
               onClick={() => setIsOpen(false)}
