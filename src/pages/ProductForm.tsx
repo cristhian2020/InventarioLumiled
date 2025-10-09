@@ -9,11 +9,11 @@ type ProductFormProps = {
 
 export const ProductForm: React.FC<ProductFormProps> = ({ product, onSaved }) => {
   const [nombre, setNombre] = useState(product?.nombre ?? "");
-  const [cantidad, setCantidad] = useState(product?.cantidad ?? 0);
-  const [precio, setPrecio] = useState(product?.precio ?? 0);
+  const [cantidad, setCantidad] = useState(product?.cantidad?.toString() ?? "");
+  const [precio, setPrecio] = useState(product?.precio?.toString() ?? "");
   const [proveedor, setProveedor] = useState(product?.proveedor ?? "");
   const [categoria, setCategoria] = useState(product?.categoria ?? "");
-  const [stockMinimo, setStockMinimo] = useState(product?.stockMinimo ?? 5);
+  const [stockMinimo, setStockMinimo] = useState(product?.stockMinimo?.toString() ?? "");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -24,23 +24,30 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product, onSaved }) =>
       if (product?.id) {
         await updateProduct(product.id, {
           nombre,
-          cantidad,
-          precio,
+          cantidad:Number(cantidad),
+          precio:Number(precio),
           proveedor,
           categoria,
-          stockMinimo,
+          stockMinimo:Number(stockMinimo),
         });
         alert("Producto actualizado ✅");
       } else {
         await addProduct({
           nombre,
-          cantidad,
-          precio,
+          cantidad:Number(cantidad),
+          precio:Number(precio),
           proveedor,
           categoria,
-          stockMinimo,
+          stockMinimo:Number(stockMinimo),
         });
         alert("Producto agregado ✅");
+        // Limpiar el formulario después de agregar un producto
+        setNombre("");
+        setCantidad("");
+        setPrecio("");
+        setProveedor("");
+        setCategoria("");
+        setStockMinimo("");
       }
 
       if (onSaved) onSaved();
@@ -50,6 +57,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product, onSaved }) =>
       setLoading(false);
     }
   };
+ 
 
   return (
     <form
@@ -149,6 +157,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product, onSaved }) =>
           className="w-full sm:w-auto bg-blue-600 text-white font-semibold rounded-lg py-2 px-4 hover:bg-blue-700 transition disabled:bg-gray-400"
         >
           {loading ? "Guardando..." : product ? "Actualizar" : "Agregar"}
+
         </button>
       </div>
     </form>

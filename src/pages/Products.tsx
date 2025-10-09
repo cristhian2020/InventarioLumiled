@@ -271,7 +271,7 @@ export const ProductsPage: React.FC = () => {
                         selectedProduct.id,
                         "salida",
                         cantidad,
-                        "usuario-demo"
+                        "LumiLed"
                       );
                       alert(`Venta de ${cantidad} unidades registrada ✅`);
                       setShowSaleModal(false);
